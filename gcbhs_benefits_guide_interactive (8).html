@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCBHS Employee Benefits Guide 2025 - Interactive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2em;
+            margin-bottom: 5px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+        
+        .header .subtitle {
+            font-size: 1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .header .year {
+            font-size: 2em;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+        
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            background: #2c5282;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .nav-tab {
+            color: white;
+            padding: 12px 24px;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-size: 1em;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav-tab:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .nav-tab.active {
+            border-bottom: 3px solid #667eea;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .welcome {
+            padding: 60px 40px;
+            background: #f7fafc;
+            border-left: 5px solid #2c5282;
+        }
+        
+        .welcome h2 {
+            color: #2c5282;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .welcome p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #4a5568;
+        }
+        
+        .toc {
+            padding: 40px;
+            background: white;
+        }
+        
+        .toc h2 {
+            color: #2c5282;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .toc-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .toc-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .toc-item .icon {
+            font-size: 2em;
+        }
+        
+        .section {
+            padding: 60px 40px;
+            border-bottom: 1px solid #e2e8f0;
+            display: none;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section:nth-child(even) {
+            background: #f7fafc;
+        }
+        
+        .section h2 {
+            color: #2c5282;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        /* Collapsible Benefit Cards */
+        .benefit-card {
+            background: white;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .benefit-card:hover {
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .benefit-header {
+            padding: 20px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to right, #f7fafc, white);
+        }
+        
+        .benefit-header:hover {
+            background: linear-gradient(to right, #edf2f7, #f7fafc);
+        }
+        
+        .benefit-header h3 {
+            color: #2c5282;
+            font-size: 1.5em;
+            margin: 0;
+        }
+        
+        .expand-icon {
+            font-size: 1.5em;
+            color: #667eea;
+            transition: transform 0.3s;
+        }
+        
+        .benefit-card.expanded .expand-icon {
+            transform: rotate(180deg);
+        }
+        
+        .benefit-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+            padding: 0 30px;
+        }
+        
+        .benefit-card.expanded .benefit-content {
+            max-height: 3000px;
+            padding: 0 30px 30px;
+            transition: max-height 0.5s ease-in;
+        }
+        
+        .benefit-content p {
+            color: #4a5568;
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        .benefit-detail {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 15px;
+            margin: 15px 0;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 5px;
+        }
+        
+        .benefit-detail strong {
+            color: #2c5282;
+        }
+        
+        .eligibility-badge {
+            display: inline-block;
+            background: #48bb78;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .cost-table th {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .cost-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .cost-table tr:hover {
+            background: #f7fafc;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+        
+        .highlight-box h3, .highlight-box h4 {
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        ul li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+        
+        /* PDF Modal */
+        .pdf-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 10px 10px 10px 0;
+            border: none;
+            font-size: 1em;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .pdf-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            animation: fadeIn 0.3s;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 0;
+            border-radius: 10px;
+            width: 90%;
+            height: 90%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+        }
+        
+        .close-btn {
+            color: white;
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+        
+        .close-btn:hover {
+            transform: scale(1.2);
+        }
+        
+        .pdf-container {
+            flex: 1;
+            padding: 20px;
+            overflow: auto;
+        }
+        
+        .pdf-embed {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 5px;
+        }
+        
+        /* Search Box */
+        .search-container {
+            padding: 20px 40px;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 98;
+        }
+        
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 1.1em;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .search-box:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+        }
+        
+        .contact-section {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border: none;
+            color: white;
+        }
+        
+        .contact-info {
+            font-size: 1.2em;
+            line-height: 2;
+        }
+        
+        /* Quick Actions Floating Button */
+        .quick-actions {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+        
+        .action-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .action-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .header .year {
+                font-size: 1.5em;
+            }
+            
+            .nav-tabs {
+                flex-direction: column;
+            }
+            
+            .benefit-detail {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                height: 95%;
+            }
+        }
+        
+        /* Scroll to top button */
+        .scroll-top {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #2c5282;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .scroll-top:hover {
+            background: #1a365d;
+            transform: scale(1.1);
+        }
+        
+        .scroll-top.visible {
+            display: block;
+        }
+        
+        /* Tabs for benefit categories */
+        .benefit-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .benefit-tab {
+            padding: 10px 20px;
+            background: #e2e8f0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .benefit-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .benefit-category {
+            display: none;
+        }
+        
+        .benefit-category.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <h1>GCBHS</h1>
+                <div class="subtitle">Employee Benefits Guide</div>
+                <div class="year">2025</div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('overview')">Overview</button>
+            <button class="nav-tab" onclick="showSection('health')">Health & Wellness</button>
+            <button class="nav-tab" onclick="showSection('financial')">Financial Benefits</button>
+            <button class="nav-tab" onclick="showSection('time-off')">Time Off</button>
+            <button class="nav-tab" onclick="showSection('development')">Development</button>
+            <button class="nav-tab" onclick="showSection('additional')">Additional Benefits</button>
+            <button class="nav-tab" onclick="showSection('contact')">Contact</button>
+        </div>
+
+        <!-- Search -->
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="🔍 Search benefits..." onkeyup="searchBenefits(this.value)">
+        </div>
+
+        <!-- Overview Section -->
+        <div id="overview" class="section active">
+            <div class="welcome">
+                <h2>Welcome to Your Benefits</h2>
+                <p>At Greater Cincinnati Behavioral Health Services, we are committed to supporting your well-being through a comprehensive benefits package. This interactive guide will help you explore and understand all the benefits available to you.</p>
+                <p style="margin-top: 15px;">Click on any benefit card to expand and view details. Use the navigation tabs above to quickly jump to different benefit categories, or use the search bar to find specific information.</p>
+            </div>
+
+            <div class="toc">
+                <h2>Quick Access to Benefits</h2>
+                <div class="toc-grid">
+                    <div class="toc-item" onclick="showSection('health')">
+                        <span class="icon">🏥</span>
+                        <strong>Health Insurance</strong>
+                    </div>
+                    <div class="toc-item" onclick="showSection('financial')">
+                        <span class="icon">💰</span>
+                        <strong>Financial Benefits</strong>
+                    </div>
+                    <div class="toc-item" onclick="showSection('time-off')">
+                        <span class="icon">🏖️</span>
+                        <strong>Time Off</strong>
+                    </div>
+                    <div class="toc-item" onclick="showSection('development')">
+                        <span class="icon">📚</span>
+                        <strong>Professional Development</strong>
+                    </div>
+                    <div class="toc-item" onclick="openPDFModal('enrollment')">
+                        <span class="icon">📄</span>
+                        <strong>Enrollment Guide</strong>
+                    </div>
+                    <div class="toc-item" onclick="openPDFModal('summary')">
+                        <span class="icon">📊</span>
+                        <strong>Benefits Summary</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health & Wellness Section -->
+        <div id="health" class="section">
+            <h2>Health & Wellness Benefits</h2>
+            
+            <div class="highlight-box">
+                <h3>📄 Download Complete Documents</h3>
+                <button class="pdf-button" onclick="openPDFModal('medical-plan')">View Medical Plan Details (PDF)</button>
+                <button class="pdf-button" onclick="openPDFModal('dental-plan')">View Dental Plan Details (PDF)</button>
+                <button class="pdf-button" onclick="openPDFModal('vision-plan')">View Vision Plan Details (PDF)</button>
+            </div>
+            
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Medical Insurance (MedBen)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Comprehensive medical coverage through MedBen with two plan options to fit your needs.</p>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Plan Options:</h4>
+                    
+                    <div class="benefit-detail">
+                        <strong>Option 1: Low Deductible Plan</strong>
+                        <span>$1,500 individual / $3,000 family deductible | 80/20 coinsurance after deductible | $3,000 individual / $6,000 family out-of-pocket max</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Option 2: High Deductible Plan (HSA Compatible)</strong>
+                        <span>$2,500 individual / $5,000 family deductible | 80/20 coinsurance after deductible | $5,000 individual / $10,000 family out-of-pocket max</span>
+                    </div>
+                    
+                    <button class="pdf-button" onclick="event.stopPropagation(); openPDFModal('medical-comparison')">Compare Plans (PDF)</button>
+                    
+                    <h4 style="color: #2c5282; margin-top: 30px;">Monthly Employee Premium Contributions:</h4>
+                    
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Coverage Tier</th>
+                                <th>Low Deductible Plan</th>
+                                <th>High Deductible Plan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Employee Only</td>
+                                <td>$45.00</td>
+                                <td>$30.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Spouse</td>
+                                <td>$135.00</td>
+                                <td>$90.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Child(ren)</td>
+                                <td>$90.00</td>
+                                <td>$60.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Family</td>
+                                <td>$180.00</td>
+                                <td>$120.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="benefit-detail" style="margin-top: 20px;">
+                        <strong>Provider Network:</strong>
+                        <span>Access to extensive network of healthcare providers | Find providers at mbaccess.medben.com</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Customer Service:</strong>
+                        <span>1-800-686-8425 | Monday-Friday 8:00 AM - 5:00 PM</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time & Part-time (≥30 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Dental Insurance (Delta Dental)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Comprehensive dental coverage through Delta Dental of Ohio with preventive, basic, and major services.</p>
+                    
+                    <button class="pdf-button" onclick="event.stopPropagation(); openPDFModal('dental-benefits')">View Dental Benefits Guide (PDF)</button>
+                    
+                    <div class="benefit-detail">
+                        <strong>Annual Maximum:</strong>
+                        <span>$1,500 per person per year</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Deductible:</strong>
+                        <span>$50 individual / $150 family per year (waived for preventive services)</span>
+                    </div>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Coverage Levels:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li><strong>Preventive Services:</strong> 100% coverage (cleanings, exams, X-rays) - No deductible</li>
+                        <li><strong>Basic Services:</strong> 80% coverage after deductible (fillings, extractions)</li>
+                        <li><strong>Major Services:</strong> 50% coverage after deductible (crowns, bridges, dentures)</li>
+                        <li><strong>Orthodontia:</strong> 50% coverage | $1,500 lifetime maximum per person</li>
+                    </ul>
+                    
+                    <h4 style="color: #2c5282; margin-top: 30px;">Monthly Employee Premium Contributions:</h4>
+                    
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Coverage Tier</th>
+                                <th>Monthly Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Employee Only</td>
+                                <td>$10.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Spouse</td>
+                                <td>$25.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Child(ren)</td>
+                                <td>$30.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Family</td>
+                                <td>$45.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="benefit-detail" style="margin-top: 20px;">
+                        <strong>Find a Dentist:</strong>
+                        <span>www.deltadentaloh.com | 1-800-524-0149</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time & Part-time (≥30 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Vision Insurance (MedBen Vision)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Comprehensive vision care through MedBen's Vision Service Plan (VSP) network.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Eye Exam:</strong>
+                        <span>$10 copay | Once every 12 months</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Lenses:</strong>
+                        <span>$10 copay | Once every 12 months (single, bifocal, trifocal, or progressive)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Frames:</strong>
+                        <span>$130 allowance | Once every 24 months | 20% discount on amounts over allowance</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Contact Lenses:</strong>
+                        <span>$130 allowance (in lieu of glasses) | Once every 12 months | 15% discount on amounts over allowance</span>
+                    </div>
+                    
+                    <h4 style="color: #2c5282; margin-top: 30px;">Monthly Employee Premium Contributions:</h4>
+                    
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Coverage Tier</th>
+                                <th>Monthly Cost</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Employee Only</td>
+                                <td>$5.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Spouse</td>
+                                <td>$10.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Child(ren)</td>
+                                <td>$12.00</td>
+                            </tr>
+                            <tr>
+                                <td>Employee + Family</td>
+                                <td>$17.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time & Part-time (≥30 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Life & AD&D Insurance (Mutual of Omaha)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Basic life insurance and accidental death & dismemberment coverage provided by GCBHS at no cost to you.</p>
+                    
+                    <button class="pdf-button" onclick="event.stopPropagation(); openPDFModal('life-insurance')">View Life Insurance Details (PDF)</button>
+                    
+                    <div class="benefit-detail">
+                        <strong>Basic Life Coverage:</strong>
+                        <span>$25,000 (employer-paid)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Basic AD&D Coverage:</strong>
+                        <span>$25,000 (employer-paid)</span>
+                    </div>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Optional Supplemental Life Insurance:</h4>
+                    
+                    <div class="benefit-detail">
+                        <strong>Employee Supplemental Life:</strong>
+                        <span>Available in $10,000 increments up to $200,000 | Guaranteed issue: $100,000 (no medical questions) | Evidence of insurability required above $100,000</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Spouse Life:</strong>
+                        <span>Available in $5,000 increments up to $100,000 (not to exceed 50% of employee coverage) | Guaranteed issue: $30,000</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Child Life:</strong>
+                        <span>$10,000 coverage per child (age 15 days to 26 years) | Guaranteed issue - no medical questions</span>
+                    </div>
+                    
+                    <p style="margin-top: 20px;"><strong>Important:</strong> Supplemental life insurance premiums are based on age and increase every 5 years. Rates available upon request from HR.</p>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time & Part-time (≥30 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Short-Term Disability (Mutual of Omaha)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Income protection if you're unable to work due to illness or injury.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Coverage:</strong>
+                        <span>60% of weekly earnings up to $1,500 per week maximum</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Elimination Period:</strong>
+                        <span>7 days for accident | 7 days for illness</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Benefit Duration:</strong>
+                        <span>Up to 13 weeks</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Pre-existing Condition:</strong>
+                        <span>3/12 limitation applies (treatment in past 3 months, limitation for first 12 months of coverage)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Cost:</strong>
+                        <span>Employer-paid benefit (no cost to employee)</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time (≥40 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Long-Term Disability (Mutual of Omaha)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Extended income protection for disabilities lasting beyond short-term coverage.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Coverage:</strong>
+                        <span>60% of monthly earnings up to $7,500 per month maximum</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Elimination Period:</strong>
+                        <span>90 days</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Benefit Duration:</strong>
+                        <span>To age 65 (or Social Security Normal Retirement Age)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Own Occupation Period:</strong>
+                        <span>24 months (then any occupation)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Pre-existing Condition:</strong>
+                        <span>3/12 limitation applies</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Cost:</strong>
+                        <span>Employer-paid benefit (no cost to employee)</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time (≥40 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Employee Assistance Program (EAP)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Confidential counseling and support services for you and your family members at no cost.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Counseling Sessions:</strong>
+                        <span>Up to 3 sessions per issue, per person, per year</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Services Available:</strong>
+                        <span>Personal counseling, work/life balance, legal consultation, financial guidance, family issues, stress management</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Availability:</strong>
+                        <span>24/7 access by phone</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Confidentiality:</strong>
+                        <span>100% confidential - your employer will not know you used the service</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Cost:</strong>
+                        <span>FREE - employer-paid benefit</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: All employees and their household members</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Financial Benefits Section -->
+        <div id="financial" class="section">
+            <h2>Financial Benefits</h2>
+            
+            <div class="highlight-box">
+                <h3>📄 Download Financial Planning Documents</h3>
+                <button class="pdf-button" onclick="openPDFModal('retirement-guide')">403(b) Retirement Plan Guide (PDF)</button>
+                <button class="pdf-button" onclick="openPDFModal('fsa-guide')">FSA Enrollment Guide (PDF)</button>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>403(b) Retirement Plan (Empower)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Build your retirement savings with employer contributions and tax advantages.</p>
+                    
+                    <button class="pdf-button" onclick="event.stopPropagation(); openPDFModal('retirement-details')">View Complete Retirement Plan Details (PDF)</button>
+                    
+                    <h4 style="color: #2c5282;">Employer Contribution:</h4>
+                    
+                    <div class="benefit-detail">
+                        <strong>Full-time Staff (≥40 hrs/week):</strong>
+                        <span>4% of gross pay regardless of employee contribution</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Part-time Staff (30-39 hrs/week):</strong>
+                        <span>2% of gross pay regardless of employee contribution</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Vesting Schedule:</strong>
+                        <span>20% per year | 100% vested after 5 years</span>
+                    </div>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Employee Voluntary Contributions:</h4>
+                    
+                    <div class="benefit-detail">
+                        <strong>2025 Contribution Limits:</strong>
+                        <span>$23,000 annual limit (under age 50) | $30,500 with catch-up (age 50+)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Contribution Type:</strong>
+                        <span>Pre-tax or Roth (after-tax) options available</span>
+                    </div>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Account Access:</h4>
+                    
+                    <div class="benefit-detail">
+                        <strong>Provider:</strong>
+                        <span>Empower Retirement</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Normal Retirement Age:</strong>
+                        <span>65</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Early Retirement:</strong>
+                        <span>Age 55 (if employed on that date)</span>
+                    </div>
+                    
+                    <p style="margin-top: 20px;"><strong>Important:</strong> Distributions before age 59½ may be subject to 10% penalty tax. Required minimum distributions begin at age 72 (or retirement, if later).</p>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time & Part-time (≥30 hrs/week) after 1 year service</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Health Savings Account (HSA)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Tax-advantaged savings account for medical expenses (available only with High Deductible Health Plan).</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>2025 Contribution Limits:</strong>
+                        <span>$4,300 individual / $8,550 family | Additional $1,000 catch-up (age 55+)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Triple Tax Advantage:</strong>
+                        <span>Tax-deductible contributions | Tax-free growth | Tax-free withdrawals for qualified medical expenses</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Rollover:</strong>
+                        <span>Unused funds roll over year to year - no "use it or lose it"</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Portability:</strong>
+                        <span>Account is yours to keep even if you change employers</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Qualified Expenses:</strong>
+                        <span>Medical, dental, vision, prescriptions, and more</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Employees enrolled in High Deductible Health Plan</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Flexible Spending Accounts (FSA)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Pre-tax accounts to pay for eligible healthcare and dependent care expenses.</p>
+                    
+                    <button class="pdf-button" onclick="event.stopPropagation(); openPDFModal('fsa-eligible')">View FSA Eligible Expenses (PDF)</button>
+                    
+                    <h4 style="color: #2c5282;">Healthcare FSA:</h4>
+                    
+                    <div class="benefit-detail">
+                        <strong>2025 Maximum:</strong>
+                        <span>$3,300 per year</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Eligible Expenses:</strong>
+                        <span>Copays, deductibles, prescriptions, dental, vision, and other qualified medical expenses</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Grace Period:</strong>
+                        <span>2.5 months after plan year end to incur expenses</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Carryover:</strong>
+                        <span>Up to $660 can be carried over to next year</span>
+                    </div>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Dependent Care FSA:</h4>
+                    
+                    <div class="benefit-detail">
+                        <strong>2025 Maximum:</strong>
+                        <span>$5,000 per year (married filing jointly) | $2,500 (married filing separately)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Eligible Expenses:</strong>
+                        <span>Daycare, preschool, before/after school programs, adult dependent care</span>
+                    </div>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">How to File Claims:</h4>
+                    
+                    <div class="benefit-detail">
+                        <strong>Provider:</strong>
+                        <span>Custom Design Benefits</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Online Portal:</strong>
+                        <span>www.CustomDesignBenefits.com → Member Portal → Custom Flex</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Contact:</strong>
+                        <span>513.598.2929 (local) | 800.598.2929 (toll-free)</span>
+                    </div>
+                    
+                    <p style="margin-top: 20px;"><strong>FSA Card:</strong> Nearly 80% of FSA card transactions are automatically approved. Keep receipts but do not send unless requested.</p>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time & Part-time (≥30 hrs/week)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Time Off Section -->
+        <div id="time-off" class="section">
+            <h2>Time Off Benefits</h2>
+            
+            <div class="highlight-box">
+                <h3>📄 Download Time Off Policies</h3>
+                <button class="pdf-button" onclick="openPDFModal('pto-policy')">PTO Policy & Guidelines (PDF)</button>
+                <button class="pdf-button" onclick="openPDFModal('holiday-calendar')">2025 Holiday Calendar (PDF)</button>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Paid Time Off (PTO)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Flexible paid time off for vacation, personal time, and illness.</p>
+                    
+                    <h4 style="color: #2c5282;">Annual PTO Accrual:</h4>
+                    
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Years of Service</th>
+                                <th>Annual PTO Days</th>
+                                <th>Accrual per Pay Period</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0-2 years</td>
+                                <td>15 days</td>
+                                <td>4.62 hours (bi-weekly)</td>
+                            </tr>
+                            <tr>
+                                <td>3-5 years</td>
+                                <td>20 days</td>
+                                <td>6.15 hours (bi-weekly)</td>
+                            </tr>
+                            <tr>
+                                <td>6-10 years</td>
+                                <td>25 days</td>
+                                <td>7.69 hours (bi-weekly)</td>
+                            </tr>
+                            <tr>
+                                <td>11+ years</td>
+                                <td>30 days</td>
+                                <td>9.23 hours (bi-weekly)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="benefit-detail" style="margin-top: 20px;">
+                        <strong>Accrual Start:</strong>
+                        <span>PTO begins accruing from your first day of employment</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Usage:</strong>
+                        <span>May use PTO after 90 days of employment</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Maximum Accrual:</strong>
+                        <span>240 hours (30 days) | Accrual stops when maximum is reached</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Payout at Termination:</strong>
+                        <span>Unused PTO paid out upon separation (voluntary or involuntary)</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time (≥40 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Paid Holidays</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>11 paid holidays per year to spend with family and friends.</p>
+                    
+                    <button class="pdf-button" onclick="event.stopPropagation(); openPDFModal('holiday-schedule')">View 2025 Holiday Schedule (PDF)</button>
+                    
+                    <h4 style="color: #2c5282;">Observed Holidays:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>New Year's Day</li>
+                        <li>Martin Luther King Jr. Day</li>
+                        <li>Presidents' Day</li>
+                        <li>Memorial Day</li>
+                        <li>Juneteenth</li>
+                        <li>Independence Day</li>
+                        <li>Labor Day</li>
+                        <li>Thanksgiving Day</li>
+                        <li>Day After Thanksgiving</li>
+                        <li>Christmas Eve</li>
+                        <li>Christmas Day</li>
+                    </ul>
+                    
+                    <div class="benefit-detail" style="margin-top: 20px;">
+                        <strong>Holiday Pay:</strong>
+                        <span>Full-time staff receive 8 hours holiday pay | Part-time staff receive pro-rated pay based on schedule</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Holiday on Weekend:</strong>
+                        <span>If holiday falls on Saturday, observed Friday | If falls on Sunday, observed Monday</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time & Part-time (≥30 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Family & Medical Leave (FMLA)</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Job-protected leave for family and medical reasons.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Duration:</strong>
+                        <span>Up to 12 weeks of unpaid, job-protected leave in a 12-month period</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Qualifying Reasons:</strong>
+                        <span>Birth/adoption of child, serious health condition, care for family member with serious health condition</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Eligibility Requirements:</strong>
+                        <span>Employed for at least 12 months | Worked at least 1,250 hours in past 12 months</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Benefits During Leave:</strong>
+                        <span>Health insurance continues | Must use available PTO first</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Job Protection:</strong>
+                        <span>Return to same or equivalent position with same pay and benefits</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Staff meeting FMLA requirements</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Parental Leave</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Additional paid leave for new parents to bond with their child.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Duration:</strong>
+                        <span>2 weeks (80 hours) of paid parental leave</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Qualifying Events:</strong>
+                        <span>Birth, adoption, or foster care placement of a child</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Usage Window:</strong>
+                        <span>Must be used within 12 months of child's arrival</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Can be combined with:</strong>
+                        <span>FMLA, PTO, and other applicable leave for extended time off</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time staff with 1+ year of service</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Bereavement Leave</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Paid time off following the death of a family member.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Duration:</strong>
+                        <span>Up to 3 days paid leave</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Covered Relationships:</strong>
+                        <span>Spouse, domestic partner, child, parent, sibling, grandparent, grandchild, in-laws</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Additional Time:</strong>
+                        <span>Additional unpaid time or PTO may be available with supervisor approval</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: All Staff</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Jury Duty Leave</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Paid leave when summoned for jury duty.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Duration:</strong>
+                        <span>Paid leave for the duration of jury service</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Required Notice:</strong>
+                        <span>Provide copy of jury summons to supervisor as soon as received</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Jury Pay:</strong>
+                        <span>You may keep any jury duty compensation received from the court</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time Staff</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Development Section -->
+        <div id="development" class="section">
+            <h2>Professional Development</h2>
+            
+            <div class="highlight-box">
+                <h3>📄 Download Development Resources</h3>
+                <button class="pdf-button" onclick="openPDFModal('tuition-application')">Tuition Reimbursement Application (PDF)</button>
+                <button class="pdf-button" onclick="openPDFModal('training-catalog')">Training Catalog (PDF)</button>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Tuition Reimbursement</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Financial assistance for continuing education and degree programs.</p>
+                    
+                    <button class="pdf-button" onclick="event.stopPropagation(); openPDFModal('tuition-policy')">View Complete Tuition Reimbursement Policy (PDF)</button>
+                    
+                    <div class="benefit-detail">
+                        <strong>Eligibility:</strong>
+                        <span>Staff with satisfactory performance and required service period</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Coverage - Full-time:</strong>
+                        <span>100% of allowable tuition for one course per session</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Coverage - Part-time (30-39 hrs):</strong>
+                        <span>75% of allowable tuition for one course per session</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Grade Requirement:</strong>
+                        <span>Must achieve grade of "C" or better | Submit grade within 30 days</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Commitment:</strong>
+                        <span>Must remain employed 1 year after course completion (2 years for MSW/LPC) | Must repay if requirements not met</span>
+                    </div>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Application Deadlines:</h4>
+                    <ul style="margin-left: 20px;">
+                        <li>July 1-15</li>
+                        <li>December 1-15</li>
+                        <li>February 1-15</li>
+                        <li>May 1-15</li>
+                    </ul>
+                    
+                    <div class="eligibility-badge">Eligible: Staff with required service period & satisfactory performance</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Training & Development</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <h4 style="color: #2c5282;">Internal Training</h4>
+                    <p>Required training provided through Relias e-learning system covering topics like client confidentiality, ethics, and professional development.</p>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">External Training</h4>
+                    <p>Sponsorship for outside workshops and conferences with Director approval. Out-of-town training also requires CEO approval.</p>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Other Development Opportunities:</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>On-the-job training and cross-training</li>
+                        <li>Mentoring program with senior leaders</li>
+                        <li>Job rotation opportunities</li>
+                        <li>Leadership development programs</li>
+                    </ul>
+                    
+                    <div class="eligibility-badge">Eligible: All Staff</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Licensure & Certification Support</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Support for professional licenses and certifications relevant to your role.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>What's Covered:</strong>
+                        <span>Licensing fees, exam fees, renewal costs, continuing education credits</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Eligible Licenses:</strong>
+                        <span>LISW, LPCC, LSW, LPC, IMFT, RN, and other job-required professional licenses</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Process:</strong>
+                        <span>Submit request to supervisor with cost documentation | Reimbursed after successful completion</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Staff in positions requiring licensure</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Benefits Section -->
+        <div id="additional" class="section">
+            <h2>Additional Benefits & Perks</h2>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Public Service Loan Forgiveness</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>As a qualifying employer under the federal PSLF program, GCBHS employment may count toward loan forgiveness for eligible staff.</p>
+                    
+                    <button class="pdf-button" onclick="event.stopPropagation(); openPDFModal('pslf-guide')">PSLF Program Guide (PDF)</button>
+                    
+                    <div class="benefit-detail">
+                        <strong>Eligibility:</strong>
+                        <span>Staff with federal student loans working full-time</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Benefit:</strong>
+                        <span>Loan forgiveness after 120 qualifying monthly payments (approximately 10 years)</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Action Required:</strong>
+                        <span>You must apply and certify employment | Contact HR for employment certification</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>More Information:</strong>
+                        <span>Visit studentaid.gov/pslf or contact HR for assistance</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>AFLAC Supplemental Insurance</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Optional supplemental insurance to help fill gaps in traditional health coverage.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>What It Covers:</strong>
+                        <span>Cash benefits for deductibles, out-of-pocket expenses, and loss of wages</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Available Plans:</strong>
+                        <span>Accident, Cancer, Critical Illness, Hospital Indemnity</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Cost:</strong>
+                        <span>Premiums paid by employee through payroll deduction</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: Full-time & Part-time (≥30 hrs/week)</div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Employee Discounts</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <h4 style="color: #2c5282;">Hearing Discount Program - Amplifon</h4>
+                    <p>Discounted hearing services and products for you and your family, including:</p>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Custom hearing solutions from 10 manufacturers</li>
+                        <li>Risk-free 60-day trial with 100% money-back guarantee</li>
+                        <li>Low price guarantee (beat by 5%)</li>
+                        <li>1 year free follow-up, 2 years free batteries, 3-year warranty</li>
+                    </ul>
+                    
+                    <div class="benefit-detail" style="margin-top: 15px;">
+                        <strong>Contact:</strong>
+                        <span>1-888-534-1747 | amplifonusa.com/mutualofomaha</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Credit Union Membership</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <p>Opportunity to join a credit union for banking services and financial products.</p>
+                    
+                    <div class="benefit-detail">
+                        <strong>Benefits:</strong>
+                        <span>Lower fees, better rates, personalized service, financial education</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>How to Join:</strong>
+                        <span>Complete membership application and submit directly to the credit union</span>
+                    </div>
+                    
+                    <div class="eligibility-badge">Eligible: All Staff</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div id="contact" class="section active">
+            <h2>Claims, Procedures & HR Contact</h2>
+            
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>How to File FSA Claims</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <h4 style="color: #2c5282;">FSA Card Users:</h4>
+                    <p>Nearly 80% of FSA card transactions are automatically approved. Keep receipts but do not send documentation unless requested by Custom Design Benefits.</p>
+                    
+                    <h4 style="color: #2c5282; margin-top: 20px;">Other Claim Methods:</h4>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Online:</strong> www.CustomDesignBenefits.com → Member Portal → Custom Flex</li>
+                        <li><strong>Mobile App:</strong> Free download - search "CustomFlex" in App Store or Google Play</li>
+                        <li><strong>Email:</strong> CustomFlex@CustomDesignBenefits.com</li>
+                        <li><strong>Fax:</strong> 513.598.2901</li>
+                        <li><strong>Mail:</strong> 5589 Cheviot Road, Cincinnati, OH 45247</li>
+                    </ul>
+                    
+                    <div class="benefit-detail" style="margin-top: 20px;">
+                        <strong>Questions:</strong>
+                        <span>513.598.2929 (local) | 800.598.2929 (toll-free)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="benefit-card" onclick="toggleCard(this)">
+                <div class="benefit-header">
+                    <h3>Important Plan Information</h3>
+                    <span class="expand-icon">▼</span>
+                </div>
+                <div class="benefit-content">
+                    <div class="benefit-detail">
+                        <strong>Plan Year:</strong>
+                        <span>July 1 - June 30</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Medical Plan Year:</strong>
+                        <span>January 1 - December 31</span>
+                    </div>
+                    
+                    <div class="benefit-detail">
+                        <strong>Benefits Effective:</strong>
+                        <span>First of month following 30 days of employment (for full-time staff ≥30 hrs/week)</span>
+                    </div>
+                    
+                    <div class="highlight-box" style="margin-top: 20px;">
+                        <h4>Important Note on Spousal Coverage:</h4>
+                        <p>A working spouse or domestic partner who has access to employer-sponsored health insurance through their own employer is NOT eligible to enroll for health and dental coverage through GCBHS.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-section">
+            <h2>HR Contact Information</h2>
+            <div class="contact-info">
+                <strong>Greater Cincinnati Behavioral Health Services</strong><br>
+                1501 Madison Road<br>
+                Cincinnati, OH 45206<br>
+                <br>
+                <strong>Phone:</strong> (513) 354-5200<br>
+                <strong>Website:</strong> www.reallygreatsite.com<br>
+                <br>
+                <em>"Your Growth, Our Priority"</em>
+            </div>
+            
+            <div style="margin-top: 40px; font-size: 0.9em; opacity: 0.9;">
+                <p><strong>Additional Resources:</strong></p>
+                <p>MedBen Customer Service: 1-800-686-8425 | mbaccess.medben.com</p>
+                <p>Delta Dental: www.deltadentaloh.com</p>
+                <p>Custom Design Benefits (FSA): 800.598.2929</p>
+                <p>Empower Retirement (403b): Contact HR for details</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PDF Modal -->
+    <div id="pdfModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Document Viewer</h3>
+                <button class="close-btn" onclick="closePDFModal()">&times;</button>
+            </div>
+            <div class="pdf-container">
+                <div id="pdfContent" style="text-align: center; padding: 50px;">
+                    <h3 style="color: #2c5282; margin-bottom: 20px;">Sample PDF Viewer</h3>
+                    <p style="font-size: 1.1em; color: #4a5568; margin-bottom: 30px;">This is a placeholder for embedded PDF documents.</p>
+                    <p style="color: #4a5568;">To add actual PDFs, replace the placeholder with:</p>
+                    <pre style="background: #f7fafc; padding: 20px; border-radius: 5px; text-align: left; margin: 20px auto; max-width: 600px; overflow-x: auto;">
+&lt;iframe 
+    src="your-document.pdf" 
+    class="pdf-embed"
+    type="application/pdf"&gt;
+&lt;/iframe&gt;</pre>
+                    <p style="color: #667eea; margin-top: 20px;">📄 Upload your PDF files and update the src attribute to display them here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-actions">
+        <button class="action-btn" onclick="window.print()" title="Print Guide">🖨️</button>
+        <button class="action-btn" onclick="expandAll()" title="Expand All">📖</button>
+        <button class="action-btn" onclick="collapseAll()" title="Collapse All">📕</button>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Show/Hide sections based on tab selection
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Show selected section
+            const selectedSection = document.getElementById(sectionId);
+            if (selectedSection) {
+                selectedSection.classList.add('active');
+            }
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Toggle benefit card expansion
+        function toggleCard(card) {
+            card.classList.toggle('expanded');
+        }
+
+        // Expand all cards
+        function expandAll() {
+            const cards = document.querySelectorAll('.benefit-card');
+            cards.forEach(card => {
+                card.classList.add('expanded');
+            });
+        }
+
+        // Collapse all cards
+        function collapseAll() {
+            const cards = document.querySelectorAll('.benefit-card');
+            cards.forEach(card => {
+                card.classList.remove('expanded');
+            });
+        }
+
+        // Open PDF modal
+        function openPDFModal(pdfType) {
+            const modal = document.getElementById('pdfModal');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            // Set title based on PDF type
+            const titles = {
+                'enrollment': 'Enrollment Guide',
+                'summary': 'Benefits Summary',
+                'medical-plan': 'Medical Plan Details',
+                'dental-plan': 'Dental Plan Details',
+                'vision-plan': 'Vision Plan Details',
+                'medical-comparison': 'Medical Plan Comparison',
+                'dental-benefits': 'Dental Benefits Guide',
+                'life-insurance': 'Life Insurance Details',
+                'retirement-guide': '403(b) Retirement Plan Guide',
+                'fsa-guide': 'FSA Enrollment Guide',
+                'retirement-details': 'Retirement Plan Details',
+                'fsa-eligible': 'FSA Eligible Expenses',
+                'pto-policy': 'PTO Policy & Guidelines',
+                'holiday-calendar': '2025 Holiday Calendar',
+                'holiday-schedule': '2025 Holiday Schedule',
+                'tuition-application': 'Tuition Reimbursement Application',
+                'training-catalog': 'Training Catalog',
+                'tuition-policy': 'Tuition Reimbursement Policy',
+                'pslf-guide': 'PSLF Program Guide'
+            };
+            
+            modalTitle.textContent = titles[pdfType] || 'Document Viewer';
+            modal.classList.add('active');
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close PDF modal
+        function closePDFModal() {
+            const modal = document.getElementById('pdfModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('pdfModal');
+            if (event.target == modal) {
+                closePDFModal();
+            }
+        }
+
+        // Search functionality
+        function searchBenefits(query) {
+            const searchQuery = query.toLowerCase().trim();
+            
+            if (searchQuery === '') {
+                // If search is empty, show all sections and cards
+                document.querySelectorAll('.section').forEach(section => {
+                    section.style.display = 'block';
+                });
+                document.querySelectorAll('.benefit-card').forEach(card => {
+                    card.style.display = 'block';
+                    card.classList.remove('expanded');
+                });
+                return;
+            }
+            
+            // Search through all sections
+            document.querySelectorAll('.section').forEach(section => {
+                let sectionHasMatch = false;
+                const cards = section.querySelectorAll('.benefit-card');
+                
+                cards.forEach(card => {
+                    const text = card.textContent.toLowerCase();
+                    if (text.includes(searchQuery)) {
+                        card.style.display = 'block';
+                        if (searchQuery.length > 2) {
+                            card.classList.add('expanded');
+                        }
+                        sectionHasMatch = true;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+                
+                // Show/hide section based on matches
+                if (sectionHasMatch) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+            
+            // Also search in section headings
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                const heading = section.querySelector('h2');
+                if (heading && heading.textContent.toLowerCase().includes(searchQuery)) {
+                    section.style.display = 'block';
+                }
+            });
+        }
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show/hide scroll to top button
+        window.onscroll = function() {
+            const scrollTopBtn = document.querySelector('.scroll-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        };
+
+        // Initialize - expand first card in each section as example
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scroll behavior
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // ESC to close modal
+            if (e.key === 'Escape') {
+                closePDFModal();
+            }
+            
+            // Ctrl/Cmd + K to focus search
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                document.querySelector('.search-box').focus();
+            }
+        });
+    </script>
+</body>
+</html>
